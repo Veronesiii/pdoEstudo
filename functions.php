@@ -6,7 +6,7 @@ include_once('conexao.php');
 
 function listarAtores($con)
 {
-    $query = $con->query("SELECT * FROM ator");
+    $query = $con->query("SELECT * FROM ator ORDER BY ultima_atualizacao DESC");
     $atores = $query->fetchAll(PDO::FETCH_ASSOC);
 
     return $atores;
@@ -14,15 +14,22 @@ function listarAtores($con)
 
 
 if(isset($_POST['adicionar_ator'])){
-    // var_dump($con);
     //adicionar ator
-    $query = $con->prepare("INSERT INTO ator (primeiro_nome, ultimo_nome) values (?, ?)");
 
-    $resultado = $query->execute([isset($_POST['nome']), isset($_POST['sobrenome']) ]);
+    if($_POST['nome'] != "" && $_POST['sobrenome'] != "") {        
+        $query = $con->prepare("INSERT INTO ator (primeiro_nome, ultimo_nome) values (:nome, :sobrenome)");
+    
+        $resultado = $query->execute([
+            ":nome" => $_POST['nome'], 
+            ":sobrenome" => $_POST['sobrenome']
+        ]);
 
-    // $resultado = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        echo "<p class='alert alert-success'>Cadastrado!</p>";
+    } else {
+        echo "<p class='alert alert-warning'>PREENCHA TODOS OS CAMPOS!</p>";
 
-    var_dump($resultado);
+    }
+
 }
 
 function editar_ator($con){
