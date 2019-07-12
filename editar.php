@@ -20,6 +20,7 @@
     <div class="container">
         <?php $ator = editar_ator($con); ?>
 
+        
         <form method="post">
             <legend>Editar ator</legend>
             <input type="hidden" name="id" value="<?php echo $ator['ator_id']; ?>">
@@ -31,7 +32,8 @@
                 <label for="sobrenome">Sobrenome</label>
                 <input type="text" name="sobrenome" id="sobrenome" class="form-control" value="<?php echo $ator['ultimo_nome']; ?>">
             </div>
-            <button name="editar_ator">Enviar</button>
+            <button name="editar_ator" class="btn btn-primary">Enviar</button>
+            <a href="index.php" class="btn btn-default">Voltar para lista</a>
         </form>
     </div>
 </body>

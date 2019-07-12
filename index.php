@@ -27,6 +27,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Sobrenome</th>
+                        <th>Ações</th>
                     </tr>
                     <?php
                     foreach (listarAtores($con) as $ator) {
