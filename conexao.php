@@ -1,9 +1,9 @@
 
 <?php
 
-$dsn = "mysql:host=localhost;dbname=locadora;port=3306"; //informações p/ conexão
-$user = "root";
-$pass = "root";
+$dsn = "mysql:host=db4free.net;dbname=locadora_pdo;port=3306"; //informações p/ conexão
+$user = "dh_estudo";
+$pass = "dh_estudo_2019";
 
 $con = new PDO($dsn, $user, $pass);
 
